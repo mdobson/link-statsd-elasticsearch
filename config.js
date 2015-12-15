@@ -58,7 +58,7 @@ Optional Variables:
   deleteGauges:     don't send values to graphite for inactive gauges, as opposed to sending the previous value [default: false]
   deleteTimers:     don't send values to graphite for inactive timers, as opposed to sending 0 [default: false]
   deleteSets:       don't send values to graphite for inactive sets, as opposed to sending 0 [default: false]
-  deleteCounters:   don't send values to graphite for inactive counters, as opposed to sending 0 [default: false]
+  deleteCounters:   don't send values to graphite for inactive counte rs, as opposed to sending 0 [default: false]
   prefixStats:      prefix to use for the statsd statistics data for this running instance of statsd [default: statsd]
                     applies to both legacy and new namespacing
   keyNameSanitize:  sanitize all stat names on ingress [default: true]
@@ -116,8 +116,12 @@ Optional Variables:
 {
   backends: ['./backends/statsd-elasticsearch-backend'],
   debug: false,
-//  dumpMessages: true,
+  //  dumpMessages: true,
   keyNameSanitize: false, // Needed for dimensions
+  deleteGauges: true,
+  deleteTimers: true,
+  deleteSets: true,
+  deleteCounters: true,
   elasticsearch: {
     port: 9200,
     host: process.env.ELASTICSEARCH_HOST,
